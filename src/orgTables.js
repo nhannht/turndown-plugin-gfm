@@ -1,3 +1,4 @@
+
 var indexOf = Array.prototype.indexOf
 var every = Array.prototype.every
 var rules = {}
@@ -23,18 +24,28 @@ rules.tableRow = {
       const colCount = tableColCount(parentTable)
       for (var i = 0; i < colCount; i++) {
         const childNode = colCount >= node.childNodes.length ? null : node.childNodes[i]
+
         var border = '---'
+
         var align = childNode ? (childNode.getAttribute('align') || '').toLowerCase() : ''
 
         if (align) border = alignMap[align] || border
 
         if (childNode) {
-          borderCells += cell(border, node.childNodes[i])
+          let borderCells1 = cell(border, node.childNodes[i])
+          console.log('Cell1 is ' + borderCells1)
+          borderCells += borderCells1
         } else {
-          borderCells += cell(border, null, i)
+          let borderCells2 = cell(border, null, i)
+          console.log('Cell2 is ' + borderCells2)
+          borderCells += borderCells2
+          // borderCells += createSecondLineCell(colCount, i)
         }
+        // borderCells += "hello"
       }
+        // console.log("Cell is" + borderCells)
     }
+    console.log('Content is' + content)
     return '\n' + content + (borderCells ? '\n' + borderCells : '')
   }
 }
@@ -108,11 +119,12 @@ function cell (content, node = null, index = null) {
   if (index === null) index = indexOf.call(node.parentNode.childNodes, node)
   var prefix = ' '
   if (index === 0) prefix = '| '
+
   let filteredContent = content.trim().replace(/\n\r/g, '<br>').replace(/\n/g, '<br>')
   filteredContent = filteredContent.replace(/\|+/g, '\\|')
   while (filteredContent.length < 3) filteredContent += ' '
   if (node) filteredContent = handleColSpan(filteredContent, node, ' ')
-  return prefix + filteredContent + ' |'
+  return prefix + filteredContent + ' |+'
 }
 
 function nodeContainsTable (node) {
@@ -163,7 +175,7 @@ function tableColCount (node) {
   return maxColCount
 }
 
-export default function tables (turndownService) {
+export default function orgTables (turndownService) {
   turndownService.keep(function (node) {
     return node.nodeName === 'TABLE'
   })

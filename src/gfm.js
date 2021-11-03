@@ -1,6 +1,11 @@
+import orgHeading from './orgHeading'
+import orgCodeBlock from './orgCodeBlock'
+import orgImage from './orgImage'
+import orgInlineLink from './orgInlineLink'
+import tables from './tables'
+import orgTables from './orgTables'
 import highlightedCodeBlock from './highlighted-code-block'
 import strikethrough from './strikethrough'
-import tables from './tables'
 import taskListItems from './task-list-items'
 
 function gfm (turndownService) {
@@ -8,8 +13,24 @@ function gfm (turndownService) {
     highlightedCodeBlock,
     strikethrough,
     tables,
-    taskListItems
+    taskListItems,
+    orgHeading,
+    orgCodeBlock,
+    orgImage,
+    orgInlineLink,
+    orgTables
   ])
 }
 
-export { gfm, highlightedCodeBlock, strikethrough, tables, taskListItems }
+export {
+  gfm,
+  orgHeading,
+  orgCodeBlock,
+  orgImage,
+  orgInlineLink,
+  orgTables,
+  strikethrough,
+  tables,
+  taskListItems,
+  highlightedCodeBlock
+}
