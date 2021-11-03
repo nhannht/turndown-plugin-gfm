@@ -1,4 +1,3 @@
-
 var indexOf = Array.prototype.indexOf
 var every = Array.prototype.every
 var rules = {}
@@ -21,6 +20,7 @@ rules.tableRow = {
     var alignMap = { left: ':--', right: '--:', center: ':-:' }
 
     if (isHeadingRow(node)) {
+      borderCells += '|'
       const colCount = tableColCount(parentTable)
       for (var i = 0; i < colCount; i++) {
         const childNode = colCount >= node.childNodes.length ? null : node.childNodes[i]
@@ -32,20 +32,20 @@ rules.tableRow = {
         if (align) border = alignMap[align] || border
 
         if (childNode) {
-          let borderCells1 = cell(border, node.childNodes[i])
+          let borderCells1 = borderCellCreate(border, colCount, node.childNodes[i])
           console.log('Cell1 is ' + borderCells1)
           borderCells += borderCells1
         } else {
-          let borderCells2 = cell(border, null, i)
+          let borderCells2 = borderCellCreate(border, colCount, null, i)
           console.log('Cell2 is ' + borderCells2)
           borderCells += borderCells2
           // borderCells += createSecondLineCell(colCount, i)
         }
         // borderCells += "hello"
       }
-        // console.log("Cell is" + borderCells)
+      // console.log("Cell is" + borderCells)
     }
-    console.log('Content is' + content)
+    console.log('Content is ' + content)
     return '\n' + content + (borderCells ? '\n' + borderCells : '')
   }
 }
@@ -66,9 +66,10 @@ rules.table = {
     // If table has no heading, add an empty one so as to get a valid Markdown table
     var secondLine = content.trim().split('\n')
     if (secondLine.length >= 2) secondLine = secondLine[1]
-    var secondLineIsDivider = secondLine.indexOf('| ---') === 0
+    var secondLineIsDivider = secondLine.indexOf('|---') === 0
 
     var columnCount = tableColCount(node)
+    // eslint-disable-next-line no-unused-vars
     var emptyHeader = ''
     if (columnCount && !secondLineIsDivider) {
       emptyHeader = '|' + '     |'.repeat(columnCount) + '\n' + '|' + ' --- |'.repeat(columnCount)
@@ -115,6 +116,18 @@ function isFirstTbody (element) {
   )
 }
 
+function borderCellCreate (content, colCount, node = null, index = null) {
+  let filteredContent = content.trim().replace(/\n\r/g, '<br>').replace(/\n/g, '<br>')
+  filteredContent = filteredContent.replace(/\|+/g, '\\|')
+  while (filteredContent.length < 3) filteredContent += ' '
+  if (node) filteredContent = handleColSpan(filteredContent, node, ' ')
+  if (index <= colCount - 2) {
+    return filteredContent + '+'
+  } else {
+    return filteredContent + '|'
+  }
+}
+
 function cell (content, node = null, index = null) {
   if (index === null) index = indexOf.call(node.parentNode.childNodes, node)
   var prefix = ' '
@@ -124,7 +137,11 @@ function cell (content, node = null, index = null) {
   filteredContent = filteredContent.replace(/\|+/g, '\\|')
   while (filteredContent.length < 3) filteredContent += ' '
   if (node) filteredContent = handleColSpan(filteredContent, node, ' ')
-  return prefix + filteredContent + ' |+'
+  // if (colCount != null && index === colCount - 1) {
+  //   return prefix + filteredContent + '|'
+  // } else {
+  return prefix + filteredContent + ' |'
+  // }
 }
 
 function nodeContainsTable (node) {
