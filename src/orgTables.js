@@ -63,7 +63,7 @@ rules.table = {
     // Ensure there are no blank lines
     content = content.replace(/\n+/g, '\n')
 
-    // If table has no heading, add an empty one so as to get a valid Markdown table
+    // If table has no heading, add an empty one so as to get a valid Org table
     var secondLine = content.trim().split('\n')
     if (secondLine.length >= 2) secondLine = secondLine[1]
     var secondLineIsDivider = secondLine.indexOf('|---') === 0
@@ -72,7 +72,7 @@ rules.table = {
     // eslint-disable-next-line no-unused-vars
     var emptyHeader = ''
     if (columnCount && !secondLineIsDivider) {
-      emptyHeader = '|' + '     |'.repeat(columnCount) + '\n' + '|' + ' --- |'.repeat(columnCount)
+      emptyHeader = '|' + '   |'.repeat(columnCount) + '\n' + '|' + '---+'.repeat(columnCount - 1) + '---|'
     }
 
     return '\n\n' + emptyHeader + content + '\n\n'

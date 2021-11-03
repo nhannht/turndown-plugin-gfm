@@ -46,3 +46,28 @@ var table = '<table>\n' +
   '  </tbody>\n' +
   '</table>'
 console.log(turndownService.turndown(table))
+
+
+var tableNoHeader = '<table>\n' +
+  '   <tbody>\n' +
+  '     <tr>\n' +
+  '       <td>text1.1</td>\n' +
+  '       <td>text1.2</td>\n' +
+  '       <td>text1.3</td>\n' +
+  '     </tr>\n' +
+  '     <tr>\n' +
+  '       <td>text2.1</td>\n' +
+  '       <td>text2.2</td>\n' +
+  '       <td>text2.3</td>\n' +
+  '     </tr>\n' +
+  '     <tr>\n' +
+  '       <td>text3.1</td>\n' +
+  '       <td>text3.2</td>\n' +
+  '       <td>text3.3</td>\n' +
+  '     </tr>\n' +
+  '     <tr>\n' +
+  '     </tr>\n' +
+  '  </tbody>\n' +
+  '</table>'
+
+console.log(turndownService.turndown(tableNoHeader))
