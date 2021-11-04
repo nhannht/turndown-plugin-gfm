@@ -1,9 +1,9 @@
 
 * Quick start guide
 
-#+begin_center
-Still in beta!
-#+end_center
+#+begin_example
+All the examples below was output directly from /Org babel/. So at least you can ensure simple case like these examples will work
+#+end_example
 
 ** Import all
 This pack is built from multi smaller parts, but you can quick import them all by call =turndownService.use(turndownPluginGfm.org)= as below:
