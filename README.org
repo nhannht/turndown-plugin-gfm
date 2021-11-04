@@ -1,12 +1,12 @@
 
 * Quick start guide
 
-#+begin_comment
+#+begin_center
 Still in beta!
-#+end_comment
+#+end_center
 
 ** Import all
-This tool is built from multi-tool, but you can quick import them all by call =turndownService.use(turndownPluginGfm.org)= as below:
+This pack is built from multi smaller parts, but you can quick import them all by call =turndownService.use(turndownPluginGfm.org)= as below:
 
 Suppose we want to turn a code block from [[https://www.britannica.com/event/Vietnam-War][vietnam-war-britannica]]
 
@@ -24,5 +24,87 @@ var complex1 = '<p class="topic-paragraph"><strong><span id="ref227172"></span>V
 console.log(turndownService.turndown(complex1))
 #+end_src
 
+#+RESULTS:
+#+begin_src org
 =Vietnam War=, (1954–75), a protracted conflict that pitted the [[https://www.britannica.com/topic/communist-party-politics][communist]] government of North Vietnam and its allies in South Vietnam, known as the [[https://www.britannica.com/topic/Viet-Cong][Viet Cong]], against the government of South Vietnam and its principal ally, the [[https://www.britannica.com/place/United-States][United States]]. Called the “American War” in Vietnam (or, in full, the “War Against the Americans to Save the Nation”), the war was also part of a larger regional conflict (_see_ [[https://www.britannica.com/event/Indochina-wars][Indochina wars]]) and a [[https://www.merriam-webster.com/dictionary/manifestation][manifestation]] of the [[https://www.britannica.com/event/Cold-War][Cold War]] between the United States and the [[https://www.britannica.com/place/Soviet-Union][Soviet Union]] and their respective allies.
 undefined
+#+end_src
+
+*** See how Github render this paragraph
+=Vietnam War=, (1954–75), a protracted conflict that pitted the [[https://www.britannica.com/topic/communist-party-politics][communist]] government of North Vietnam and its allies in South Vietnam, known as the [[https://www.britannica.com/topic/Viet-Cong][Viet Cong]], against the government of South Vietnam and its principal ally, the [[https://www.britannica.com/place/United-States][United States]]. Called the “American War” in Vietnam (or, in full, the “War Against the Americans to Save the Nation”), the war was also part of a larger regional conflict (_see_ [[https://www.britannica.com/event/Indochina-wars][Indochina wars]]) and a [[https://www.merriam-webster.com/dictionary/manifestation][manifestation]] of the [[https://www.britannica.com/event/Cold-War][Cold War]] between the United States and the [[https://www.britannica.com/place/Soviet-Union][Soviet Union]] and their respective allies.
+undefined
+
+** Table
+#+begin_src js :tangle emacs/table.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgTables
+turndownService.use(org)
+const tableHTML = '<table> <thead> <tr> <th>header1</th> <th>header2</th> <th>header3</th> </tr> </thead> <tbody> <tr> <td>text1.1</td> <td>text1.2</td> <td>text1.3</td> </tr> <tr> <td>text2.1</td> <td>text2.2</td> <td>text2.3</td> </tr> <tr> <td>text3.1</td> <td>text3.2</td> <td>text3.3</td> </tr> <tr> </tr> </tbody> </table>'
+
+console.log(turndownService.turndown(tableHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+| header1 | header2 | header3 |
+|---------+---------+---------|
+| text1.1 | text1.2 | text1.3 |
+| text2.1 | text2.2 | text2.3 |
+| text3.1 | text3.2 | text3.3 |
+undefined
+#+end_src
+
+| header1 | header2 | header3 |
+|---------+---------+---------|
+| text1.1 | text1.2 | text1.3 |
+| text2.1 | text2.2 | text2.3 |
+| text3.1 | text3.2 | text3.3 |
+
+** Bold
+#+begin_src js :tangle emacs/bold.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgBold
+turndownService.use(org)
+
+var boldHtml = '<html> <head> <title>Bold text</title> </head> <body> <p>Use the strong element to <strong>indicate strongly emphasized</strong> content.</p> </body> </html>'
+
+console.log(turndownService.turndown(boldHtml))
+#+end_src
+
+Support all the below, I am so lazy to write all the example. 😽
+** Italic
+
+** Strike-thought
+** Inline code
+** Heading
+** Highlight
+** Horizon Rule
+** Image
+#+begin_src js :tangle emacs/image.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgImage
+turndownService.use(org)
+
+const imageHTML = '<img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">'
+
+
+console.log(turndownService.turndown(imageHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+[[img_girl.jpg][Girl in a jacket]]
+undefined
+#+end_src
+
+#+end_src
+
+** Subscript
+** Superscript
