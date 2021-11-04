@@ -10,6 +10,11 @@ import taskListItems from './task-list-items'
 import orgBold from './orgBold'
 import orgItalic from './orgItalic'
 import orgPicture from './orgPicture'
+import orgHighlight from './orgHighlight'
+import orgSuperscript from './orgSuperscript'
+import orgSubscript from './orgSubscript'
+import orgUnderline from './orgUnderline'
+import orgHorizoneRule from './orgHorizoneRule'
 
 function gfm (turndownService) {
   turndownService.use([
@@ -29,12 +34,21 @@ function org (turndownService) {
     orgInlineLink,
     orgBold,
     orgItalic,
-    orgPicture
+    orgPicture,
+    orgHighlight,
+    orgSuperscript,
+    orgSubscript,
+    orgUnderline,
+    orgHorizoneRule
   ])
 }
 
 export {
   gfm,
+  strikethrough,
+  tables,
+  taskListItems,
+  highlightedCodeBlock,
   org,
   orgPicture,
   orgHeading,
@@ -42,8 +56,11 @@ export {
   orgImage,
   orgInlineLink,
   orgTables,
-  strikethrough,
-  tables,
-  taskListItems,
-  highlightedCodeBlock
+  orgSuperscript,
+  orgSubscript,
+  orgUnderline,
+  orgBold,
+  orgItalic,
+  orgHighlight,
+  orgHorizoneRule
 }
