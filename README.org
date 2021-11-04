@@ -11,8 +11,8 @@ This tool is built from multi-tool, but you can quick import them all by call =t
 Suppose we want to turn a code block from [[https://www.britannica.com/event/Vietnam-War][vietnam-war-britannica]]
 
 
-  [[file:emacs/general.js]]
-#+begin_src js :tangle emacs/general.js  :comments yes :mkdirp yes :padline yes :results org
+[[file:emacs/general.js]]
+#+begin_src js :tangle emacs/general.js  :comments yes :mkdirp yes :padline yes :results org :exports both
 var TurndownService = require('turndown')
 var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
 var turndownService = new TurndownService()
