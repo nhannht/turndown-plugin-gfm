@@ -33,19 +33,13 @@ rules.tableRow = {
 
         if (childNode) {
           let borderCells1 = borderCellCreate(border, colCount, node.childNodes[i])
-          console.log('Cell1 is ' + borderCells1)
           borderCells += borderCells1
         } else {
           let borderCells2 = borderCellCreate(border, colCount, null, i)
-          console.log('Cell2 is ' + borderCells2)
           borderCells += borderCells2
-          // borderCells += createSecondLineCell(colCount, i)
         }
-        // borderCells += "hello"
       }
-      // console.log("Cell is" + borderCells)
     }
-    console.log('Content is ' + content)
     return '\n' + content + (borderCells ? '\n' + borderCells : '')
   }
 }

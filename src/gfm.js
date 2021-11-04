@@ -7,23 +7,36 @@ import orgTables from './orgTables'
 import highlightedCodeBlock from './highlighted-code-block'
 import strikethrough from './strikethrough'
 import taskListItems from './task-list-items'
+import orgBold from './orgBold'
+import orgItalic from './orgItalic'
+import orgPicture from './orgPicture'
 
 function gfm (turndownService) {
   turndownService.use([
     highlightedCodeBlock,
     strikethrough,
     tables,
-    taskListItems,
+    taskListItems
+  ])
+}
+
+function org (turndownService) {
+  turndownService.use([
     orgHeading,
     orgCodeBlock,
+    orgTables,
     orgImage,
     orgInlineLink,
-    orgTables
+    orgBold,
+    orgItalic,
+    orgPicture
   ])
 }
 
 export {
   gfm,
+  org,
+  orgPicture,
   orgHeading,
   orgCodeBlock,
   orgImage,

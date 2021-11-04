@@ -1,9 +1,9 @@
 var TurndownService = require('turndown')
-var turndownPluginGfm = require('../lib/turndown-plugin-gfm.cjs')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
 
-var gfm = turndownPluginGfm.gfm
+var org = turndownPluginGfm.org
 var turndownService = new TurndownService()
-turndownService.use(gfm)
+turndownService.use(org)
 var code = turndownService.turndown('<pre><code>Hello world!</code></pre>')
 console.log(code)
 var unorderlist = turndownService.turndown('<ol>\n' +
@@ -47,7 +47,6 @@ var table = '<table>\n' +
   '</table>'
 console.log(turndownService.turndown(table))
 
-
 var tableNoHeader = '<table>\n' +
   '   <tbody>\n' +
   '     <tr>\n' +
@@ -71,3 +70,14 @@ var tableNoHeader = '<table>\n' +
   '</table>'
 
 console.log(turndownService.turndown(tableNoHeader))
+
+var pic = '<picture>\n' +
+  '  <source media=\'(min-width:650px)\' srcset=\'img_pink_flowers.jpg\'>\n' +
+  '  <source media=\'(min-width:465px)\' srcset=\'img_white_flower.jpg\'>\n' +
+  '  <img src=\'img_orange_flowers.jpg\' alt=\'Flowers\' style=\'width:auto;\'>\n' +
+  '</picture>'
+console.log(turndownService.turndown(pic))
+
+var complex1 = "<div className='usJj9c'><h3><a className='l' href='https://www.nytimes.com/international/' data-ved='2ahUKEwiL4oLZm_7zAhVMOisKHU3NAsIQjBB6BAgGEAE' onMouseDown='return rwt(this,'','','','','AOvVaw1sqUESMiLV_IxPVnleBIuH','','2ahUKEwiL4oLZm_7zAhVMOisKHU3NAsIQjBB6BAgGEAE','','',event)' grepper-handle-result-click='1'>International</a></h3> <div className='zz3gNc'>World News&nbsp;- Business&nbsp;- Sports&nbsp;- Opinion&nbsp;- Technology&nbsp;- Health<br> </div> </div>"
+
+console.log(turndownService.turndown(complex1))
