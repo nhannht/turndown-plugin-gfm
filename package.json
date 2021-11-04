@@ -13,7 +13,7 @@
     "browserify": "^14.5.0",
     "rollup": "^0.50.0",
     "standard": "^10.0.3",
-    "turndown": "4.0.1",
+    "turndown": "^4.0.1",
     "turndown-attendant": "0.0.2"
   },
   "files": [
@@ -48,7 +48,7 @@
   "gitHead": "eb4b0e64eab40a51b0895d3a40a9d8c3cb7b1b14",
   "dependencies": {
     "@mozilla/readability": "^0.4.1",
-    "@nhannht/turndown-plugin-gfm": "1.0.10",
+    "@nhannht/turndown-plugin-gfm": "^1.0.10",
     "css": "^3.0.0",
     "html-entities": "1.2.1"
   }
