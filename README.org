@@ -24,8 +24,5 @@ var complex1 = '<p class="topic-paragraph"><strong><span id="ref227172"></span>V
 console.log(turndownService.turndown(complex1))
 #+end_src
 
-#+RESULTS:
-#+begin_src org
 =Vietnam War=, (1954–75), a protracted conflict that pitted the [[https://www.britannica.com/topic/communist-party-politics][communist]] government of North Vietnam and its allies in South Vietnam, known as the [[https://www.britannica.com/topic/Viet-Cong][Viet Cong]], against the government of South Vietnam and its principal ally, the [[https://www.britannica.com/place/United-States][United States]]. Called the “American War” in Vietnam (or, in full, the “War Against the Americans to Save the Nation”), the war was also part of a larger regional conflict (_see_ [[https://www.britannica.com/event/Indochina-wars][Indochina wars]]) and a [[https://www.merriam-webster.com/dictionary/manifestation][manifestation]] of the [[https://www.britannica.com/event/Cold-War][Cold War]] between the United States and the [[https://www.britannica.com/place/Soviet-Union][Soviet Union]] and their respective allies.
 undefined
-#+end_src
