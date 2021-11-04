@@ -16,8 +16,8 @@ export default function orgInlineCode (turndownService) {
       var trailingSpace = ''
       var matches = content.match(/=+/gm)
       if (matches) {
-        if (/^`/.test(content)) leadingSpace = ' '
-        if (/`$/.test(content)) trailingSpace = ' '
+        if (/^=/.test(content)) leadingSpace = ' '
+        if (/=$/.test(content)) trailingSpace = ' '
         while (matches.indexOf(delimiter) !== -1) delimiter = delimiter + '='
       }
 

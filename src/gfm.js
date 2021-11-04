@@ -15,6 +15,8 @@ import orgSuperscript from './orgSuperscript'
 import orgSubscript from './orgSubscript'
 import orgUnderline from './orgUnderline'
 import orgHorizoneRule from './orgHorizoneRule'
+import orgStrikeThrough from './orgStrikeThrough'
+import orgInlineCode from './orgInlineCode'
 
 function gfm (turndownService) {
   turndownService.use([
@@ -39,7 +41,9 @@ function org (turndownService) {
     orgSuperscript,
     orgSubscript,
     orgUnderline,
-    orgHorizoneRule
+    orgHorizoneRule,
+    orgStrikeThrough,
+    orgInlineCode
   ])
 }
 
@@ -50,6 +54,7 @@ export {
   taskListItems,
   highlightedCodeBlock,
   org,
+  orgInlineCode,
   orgPicture,
   orgHeading,
   orgCodeBlock,
@@ -62,5 +67,6 @@ export {
   orgBold,
   orgItalic,
   orgHighlight,
-  orgHorizoneRule
+  orgHorizoneRule,
+  orgStrikeThrough
 }

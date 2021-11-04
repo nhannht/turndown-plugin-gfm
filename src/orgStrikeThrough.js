@@ -1,4 +1,4 @@
-const strikethrough = turndownService => {
+const orgStrikeThrough = turndownService => {
   turndownService.addRule('strikethrough', {
     filter: ['del', 's', 'strike'],
     replacement: function (content) {
@@ -6,4 +6,4 @@ const strikethrough = turndownService => {
     }
   })
 }
-export default strikethrough
+export default orgStrikeThrough

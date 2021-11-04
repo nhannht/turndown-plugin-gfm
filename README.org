@@ -26,7 +26,7 @@ console.log(turndownService.turndown(complex1))
 
 #+RESULTS:
 #+begin_src org
-=Vietnam War=, (1954–75), a protracted conflict that pitted the [[https://www.britannica.com/topic/communist-party-politics][communist]] government of North Vietnam and its allies in South Vietnam, known as the [[https://www.britannica.com/topic/Viet-Cong][Viet Cong]], against the government of South Vietnam and its principal ally, the [[https://www.britannica.com/place/United-States][United States]]. Called the “American War” in Vietnam (or, in full, the “War Against the Americans to Save the Nation”), the war was also part of a larger regional conflict (_see_ [[https://www.britannica.com/event/Indochina-wars][Indochina wars]]) and a [[https://www.merriam-webster.com/dictionary/manifestation][manifestation]] of the [[https://www.britannica.com/event/Cold-War][Cold War]] between the United States and the [[https://www.britannica.com/place/Soviet-Union][Soviet Union]] and their respective allies.
+=Vietnam War=, (1954–75), a protracted conflict that pitted the [[https://www.britannica.com/topic/communist-party-politics][communist]] government of North Vietnam and its allies in South Vietnam, known as the [[https://www.britannica.com/topic/Viet-Cong][Viet Cong]], against the government of South Vietnam and its principal ally, the [[https://www.britannica.com/place/United-States][United States]]. Called the “American War” in Vietnam (or, in full, the “War Against the Americans to Save the Nation”), the war was also part of a larger regional conflict (/see/ [[https://www.britannica.com/event/Indochina-wars][Indochina wars]]) and a [[https://www.merriam-webster.com/dictionary/manifestation][manifestation]] of the [[https://www.britannica.com/event/Cold-War][Cold War]] between the United States and the [[https://www.britannica.com/place/Soviet-Union][Soviet Union]] and their respective allies.
 undefined
 #+end_src
 
@@ -76,14 +76,164 @@ var boldHtml = '<html> <head> <title>Bold text</title> </head> <body> <p>Use the
 console.log(turndownService.turndown(boldHtml))
 #+end_src
 
-Support all the below, I am so lazy to write all the example. 😽
-** Italic
+#+RESULTS:
+#+begin_src org
+Bold text
 
-** Strike-thought
+Use the strong element to =indicate strongly emphasized= content.
+undefined
+#+end_src
+
+
+Bold text
+
+Use the strong element to =indicate strongly emphasized= content.
+undefined
+
+** Italic
+#+begin_src js :tangle emacs/italic.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgItalic
+turndownService.use(org)
+var italicHTML = '<i>This text will be in italics</i>'
+
+console.log(turndownService.turndown(italicHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+/This text will be in italics/
+undefined
+#+end_src
+
+
+/This text will be in italics/
+
+** DONE Strikethrough
+#+begin_src js :tangle emacs/strikethrough.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgStrikeThrough
+turndownService.use(org)
+var strikethroughHTML = '<p><strike>Hello WWorld</strike></p>'
+var strikethroughHTML2 = '<p><del>Hello WWorld</del></p>'
+
+console.log(turndownService.turndown(strikethroughHTML))
+console.log(turndownService.turndown(strikethroughHTML2))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
++Hello WWorld+
++Hello WWorld+
+undefined
+#+end_src
+
+
++Hello WWorld+
++Hello WWorld+
+
 ** Inline code
+#+begin_src js :tangle emacs/inline-code.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgInlineCode
+turndownService.use(org)
+var inlineCodeHTML = '<p>The function <code>selectAll()</code> highlights all the text in the input field so the user can, for example, copy or delete the text.</p>'
+
+console.log(turndownService.turndown(inlineCodeHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+The function =selectAll()= highlights all the text in the input field so the user can, for example, copy or delete the text.
+undefined
+#+end_src
+
+The function =selectAll()= highlights all the text in the input field so the user can, for example, copy or delete the text.
+undefined
+
 ** Heading
+#+begin_src js :tangle emacs/heading.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgHeading
+turndownService.use(org)
+var headingHTML = "<h1>I'm the biggest heading</h1> <h2>I'm smaller than h1</h2> <h3>I'm smaller than h2</h3> <h4>I'm smaller than h3</h4> <h5>I'm smaller than h4</h5> <h6>I'm the smallest heading</h6>"
+
+console.log(turndownService.turndown(headingHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+,* I'm the biggest heading
+
+,** I'm smaller than h1
+
+,*** I'm smaller than h2
+
+,**** I'm smaller than h3
+
+,***** I'm smaller than h4
+
+,****** I'm the smallest heading
+undefined
+#+end_src
+
+
 ** Highlight
+#+begin_src js :tangle emacs/highlight.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgHighlight
+turndownService.use(org)
+var highlightHTML = "<p>Do not forget to buy <mark>milk</mark> today.</p>"
+
+console.log(turndownService.turndown(highlightHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+Do not forget to buy *milk* today.
+undefined
+#+end_src
+
+
+Do not forget to buy *milk* today.
+
 ** Horizon Rule
+#+begin_src js :tangle emacs/horizon.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgHorizoneRule
+turndownService.use(org)
+var hrHTML = "The <hr> tag in HTML stands for horizontal rule and is used to insert a horizontal rule or a thematic break in an HTML page to divide or separate document sections. The <hr> tag is an empty tag and it does not require an end tag."
+
+
+console.log(turndownService.turndown(hrHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+The
+
+-----
+
+tag in HTML stands for horizontal rule and is used to insert a horizontal rule or a thematic break in an HTML page to divide or separate document sections. The
+
+-----
+
+tag is an empty tag and it does not require an end tag.
+undefined
+#+end_src
+
 ** Image
 #+begin_src js :tangle emacs/image.js  :comments yes :mkdirp yes :padline yes :results org :exports both
 var TurndownService = require('turndown')
@@ -106,5 +256,51 @@ undefined
 
 #+end_src
 
-** Subscript
-** Superscript
+** Subscript :ATTACH:
+:PROPERTIES:
+:ID:       bb0ab166-9a83-4922-9107-ff3a543df88a
+:END:
+#+begin_src js :tangle emacs/subscript.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgSubscript
+turndownService.use(org)
+var subScriptHTML = "<p>This text contains Hello<sub>subscript</sub> text.</p>"
+
+
+console.log(turndownService.turndown(subScriptHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+This text contains Hello_{subscript} text.
+undefined
+#+end_src
+
+[[attachment:_20211104_205119screenshot.png]]
+
+** Superscript :ATTACH:
+:PROPERTIES:
+:ID:       6862ff84-372c-42e8-b783-59a6bf62a2f2
+:END:
+#+begin_src js :tangle emacs/superscript.js  :comments yes :mkdirp yes :padline yes :results org :exports both
+var TurndownService = require('turndown')
+var turndownPluginGfm = require('@nhannht/turndown-plugin-gfm')
+var turndownService = new TurndownService()
+var org = turndownPluginGfm.orgSuperscript
+turndownService.use(org)
+var superScripttHTML = "Hello<sup>This is a superscript</sup>"
+
+
+console.log(turndownService.turndown(superScripttHTML))
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+Hello^{This is a superscript}
+undefined
+#+end_src
+
+
+[[attachment:_20211104_204930screenshot.png]]
