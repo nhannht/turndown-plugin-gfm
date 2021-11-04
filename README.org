@@ -289,10 +289,7 @@ This text contains Hello_{subscript} text.
 undefined
 #+end_src
 
-
 This text contains Hello_{subscript} text.
-
-[[download:Quick_start_guide/_20211104_211812screenshot.png]]
 
 ** Superscript :ATTACH:
 :PROPERTIES:
@@ -317,10 +314,7 @@ undefined
 #+end_src
 
 
-Hello^{This is a superscript}
-
-[[download:Quick_start_guide/_20211104_211832screenshot.png]]
-
+[[file:org-download-images/Quick_start_guide/_20211104_214505screenshot.png]]
 
 
 ** Original_Readme
